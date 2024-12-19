@@ -34,7 +34,7 @@ class Logger:
         self.logger.addHandler(console_handler)
 
         # File handler
-        log_file = os.path.join(LOG_DIR, f"{name.log}")
+        log_file = os.path.join(LOG_DIR, "logs.log")
         file_handler = logging.FileHandler(log_file)
         file_handler.setFormatter(log_format)
         self.logger.addHandler(file_handler)
