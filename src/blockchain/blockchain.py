@@ -193,7 +193,7 @@ class Blockchain:
         Mines pending transactions
 
         :param miner_address: Miner's address
-        :type minder_address: dh.DHPublicKey
+        :type miner_address: dh.DHPublicKey
         :return: Mined block and reward transaction or None
         :rtype: tuple(Block, Transaction) or tuple(None, None)
         '''

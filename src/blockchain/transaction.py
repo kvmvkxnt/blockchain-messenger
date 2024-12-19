@@ -2,11 +2,9 @@
 
 import json5 as json
 import hashlib
-from cryptography.hazmat.primitives.asymmetric import rsa, dh, padding
-from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import rsa, dh
 from typing import Dict
 from utils.logger import Logger
-from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from crypto.signatures.DigitalSignature import verify
 
 log = Logger("transactions")
@@ -24,7 +22,7 @@ class Transaction:
     :type amount: float
     :ivar content: Message being sent to recipient
     :type content: bytes or None
-    :ivar sender_rsa_public_key: Sender's RSA public key used to sign the
+    :ivar sender_rsa_public_key: Sender's RSA public key used to sign the \
     transaction
     :type sender_rsa_public_key: bytes or None
     :ivar signature: Sender's signature
@@ -53,7 +51,7 @@ class Transaction:
         :type amount: float
         :param content: Message being sent to recipient
         :type content: bytes or None
-        :param sender_rsa_public_key: Sender's RSA public key used to sign the
+        :param sender_rsa_public_key: Sender's RSA public key used to sign the\
         transaction
         :type sender_rsa_public_key: bytes or None
         :param signature: Sender's signature
