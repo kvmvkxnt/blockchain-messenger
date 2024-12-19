@@ -7,6 +7,7 @@ from cryptography.hazmat.primitives import hashes
 from typing import Dict
 from utils.logger import Logger
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
+from crypto.signatures.DigitalSignature import verify
 
 log = Logger("transactions")
 
@@ -118,18 +119,5 @@ class Transaction:
             log.warning("No public key provided")
             return False
 
-        try:
-            public_key = load_pem_public_key(public_key)
-            public_key.verify(
-                self.signature,
-                self.calcuclate_hash().encode(),
-                padding.PSS(
-                    mgf=padding.MGF1(hashes.SHA256()),
-                    salt_length=padding.PSS.MAX_LENGTH,
-                ),
-                hashes.SHA256(),
-            )
-            return True
-        except Exception as e:
-            log.error(f"Signature verification failed: {e}")
-            return False
+        # Using the verify static method from crypto/signatures.py
+        verify(public_key, self.content, self.signature)
